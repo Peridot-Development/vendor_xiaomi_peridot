@@ -1,0 +1,396 @@
+#playback_spk
+#playback_spk_hp
+#enable_spk
+enable
+aw_dev_1_prof:Music
+aw_dev_0_prof:Music
+aw_dev_1_switch:Enable
+aw_dev_0_switch:Enable
+FSM_Scene:0
+FSM_Volume:255
+FSM_Stop:0
+
+#disable_spk
+disable
+aw_dev_0_switch:Disable
+aw_dev_1_switch:Disable
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+
+#playback_top-spk
+#playback_top-spk_hp
+#enable_top-spk
+enable
+aw_dev_0_prof:Music
+aw_dev_0_switch:Enable
+FSM_Scene:8
+FSM_Volume:241
+FSM_Stop:0
+
+#disable_top-spk
+disable
+aw_dev_0_switch:Disable
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+
+#playback_bot-spk
+#playback_bot-spk_hp
+#enable_bot-spk
+enable
+aw_dev_1_prof:Music
+aw_dev_1_switch:Enable
+aw_dev_0_switch:Disable
+FSM_Scene:10
+FSM_Volume:241
+FSM_Stop:0
+
+#disable_top-spk
+disable
+aw_dev_1_switch:Disable
+aw_dev_0_switch:Enable
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+
+#playback_rcv
+#playback_rcv_hp
+#enable_receiver
+enable
+aw882xx_spk_sw_gpio_switch:1
+FSM_SW_GPIO:1
+aw_dev_0_prof:Receiver
+aw_dev_0_switch:Enable
+FSM_Scene:15
+FSM_Volume:255
+FSM_Stop:0
+
+#disable_receiver
+disable
+aw882xx_spk_sw_gpio_switch:0
+FSM_SW_GPIO:0
+aw_dev_0_prof:Music
+aw_dev_0_switch:Disable
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+
+#playback_headphone
+enable
+RX_MACRO RX0 MUX:AIF1_PB
+RX_MACRO RX1 MUX:AIF1_PB
+RX INT0_1 MIX1 INP0:RX0
+RX INT1_1 MIX1 INP0:RX1
+RX INT0 DEM MUX:CLSH_DSM_OUT
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX_HPH_PWR_MODE:LOHIFI
+RX HPH Mode:CLS_H_LOHIFI
+RX_COMP1 Switch:1
+RX_COMP2 Switch:1
+HPHL_COMP Switch:1
+HPHR_COMP Switch:1
+HPHL_RDAC Switch:1
+HPHR_RDAC Switch:1
+
+disable
+RX_MACRO RX0 MUX:ZERO
+RX_MACRO RX1 MUX:ZERO
+RX INT0_1 MIX1 INP0:ZERO
+RX INT1_1 MIX1 INP0:ZERO
+RX INT0 DEM MUX:NORMAL_DSM_OUT
+RX INT1 DEM MUX:NORMAL_DSM_OUT
+RX_COMP1 Switch:0
+RX_COMP2 Switch:0
+HPHL_COMP Switch:0
+HPHR_COMP Switch:0
+HPHL_RDAC Switch:0
+HPHR_RDAC Switch:0
+
+
+#playback_us
+enable
+aw882xx_spk_sw_gpio_switch:1
+FSM_SW_GPIO:1
+aw_dev_0_prof:Receiver
+aw_dev_0_switch:Enable
+FSM_Scene:15
+FSM_Volume:255
+FSM_Stop:0
+
+disable
+aw882xx_spk_sw_gpio_switch:0
+FSM_SW_GPIO:0
+aw_dev_0_prof:Music
+aw_dev_0_switch:Disable
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+
+#capture_main-mic
+#enable_main-mic
+enable
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC0
+TX_AIF1_CAP Mixer DEC1:1
+ADC1 ChMap:SWRM_TX1_CH1
+ADC1_MIXER Switch:1
+
+#disable_main-mic
+disable
+TX DEC1 MUX:MSM_DMIC
+ADC1 ChMap:ZERO
+TX SMIC MUX1:ZERO
+TX_AIF1_CAP Mixer DEC1:0
+ADC1_MIXER Switch:0
+
+#capture_top-mic
+#enable_top-mic
+enable
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC5
+TX_AIF1_CAP Mixer DEC1:1
+ADC3 ChMap:SWRM_TX2_CH2
+ADC3_MIXER Switch:1
+
+#disable_top-mic
+disable
+TX DEC1 MUX:MSM_DMIC
+TX SMIC MUX1:ZERO
+TX_AIF1_CAP Mixer DEC1:0
+ADC3 ChMap:ZERO
+ADC3_MIXER Switch:0
+
+
+#capture_us
+enable
+TX DEC4 MUX:SWR_MIC
+TX SMIC MUX4:SWR_MIC5
+TX_AIF2_CAP Mixer DEC4:1
+ADC3 ChMap:SWRM_TX2_CH2
+ADC3_MIXER Switch:1
+ADC3 Volume:12
+
+disable
+ADC3_MIXER Switch:0
+ADC3 ChMap:ZERO
+TX_AIF2_CAP Mixer DEC4:0
+TX SMIC MUX4:ZERO
+TX DEC4 MUX:MSM_DMIC
+ADC3 Volume:6
+
+
+#setup_mainmic2headphone
+enable
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC0
+TX_AIF1_CAP Mixer DEC1:1
+ADC1 ChMap:SWRM_TX1_CH1
+ADC1_MIXER Switch:1
+RX INT0_1 MIX1 INP0:DEC1
+RX INT1_1 MIX1 INP0:DEC1
+RX INT0 DEM MUX:CLSH_DSM_OUT
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX_COMP1 Switch:1
+RX_COMP2 Switch:1
+HPHL_COMP Switch:1
+HPHR_COMP Switch:1
+HPHL Volume:8
+HPHR Volume:8
+HPHL_RDAC Switch:1
+HPHR_RDAC Switch:1
+disable
+
+#setup_topmic2headphone
+enable
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC5
+TX_AIF1_CAP Mixer DEC1:1
+ADC3 ChMap:SWRM_TX2_CH2
+ADC3_MIXER Switch:1
+RX INT0_1 MIX1 INP0:DEC1
+RX INT1_1 MIX1 INP0:DEC1
+RX INT0 DEM MUX:CLSH_DSM_OUT
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX_COMP1 Switch:1
+RX_COMP2 Switch:1
+HPHL_COMP Switch:1
+HPHR_COMP Switch:1
+HPHL Volume:8
+HPHR Volume:8
+HPHL_RDAC Switch:1
+HPHR_RDAC Switch:1
+disable
+
+
+#setup_headsetmic2headphone
+enable
+TX DEC0 MUX:SWR_MIC
+TX SMIC MUX0:SWR_MIC4
+TX_AIF1_CAP Mixer DEC0:1
+DEC0_BCS Switch:1
+ADC2 MUX:INP2
+ADC2 ChMap:SWRM_TX2_CH1
+MBHC ChMap:SWRM_TX3_CH2
+BCS Channel:CH9
+ADC2_MIXER Switch:1
+RX INT0_1 MIX1 INP0:DEC0
+RX INT1_1 MIX1 INP0:DEC0
+RX INT0 DEM MUX:CLSH_DSM_OUT
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX_COMP1 Switch:1
+RX_COMP2 Switch:1
+HPHL_COMP Switch:1
+HPHR_COMP Switch:1
+HPHL Volume:8
+HPHR Volume:8
+HPHL_RDAC Switch:1
+HPHR_RDAC Switch:1
+disable
+
+#teardown_loopback
+enable
+TX DEC1 MUX:MSM_DMIC
+TX SMIC MUX1:ZERO
+TX_AIF1_CAP Mixer DEC1:0
+TX DEC0 MUX:ZERO
+TX SMIC MUX0:ZERO
+ADC1 ChMap:ZERO
+ADC2 ChMap:ZERO
+ADC3 ChMap:ZERO
+ADC4 ChMap:ZERO
+ADC1_MIXER Switch:0
+ADC2_MIXER Switch:0
+ADC3_MIXER Switch:0
+ADC4_MIXER Switch:0
+TX0 MODE:ADC_LP
+TX2 MODE:ADC_LP
+TX3 MODE:ADC_LP
+HDR12 MUX:NO_HDR12
+ADC2 MUX:INP2
+ADC4 MUX:INP5
+HPHL Volume:20
+HPHR Volume:20
+ADC1 Volume:6
+ADC2 Volume:6
+ADC3 Volume:6
+ADC4 Volume:6
+RX INT0_1 MIX1 INP0:ZERO
+RX INT1_1 MIX1 INP0:ZERO
+RX INT0 DEM MUX:NORMAL_DSM_OUT
+RX INT1 DEM MUX:NORMAL_DSM_OUT
+RX_HPH_PWR_MODE:ULP
+RX HPH Mode:CLS_H_ULP
+RX_COMP1 Switch:0
+RX_COMP2 Switch:0
+HPHL_COMP Switch:0
+HPHR_COMP Switch:0
+HPHL Volume:18
+HPHR Volume:18
+HPHL_RDAC Switch:0
+HPHR_RDAC Switch:0
+aw_dev_0_prof:Music
+aw_dev_1_prof:Music
+aw_dev_0_switch:Disable
+aw_dev_1_switch:Disable
+aw882xx_spk_sw_gpio_switch:0
+FSM_SW_GPIO:0
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+disable
+
+
+#enable_ultrasound_mic
+enable
+TX DEC4 MUX:SWR_MIC
+TX SMIC MUX4:SWR_MIC5
+TX_AIF2_CAP Mixer DEC4:1
+ADC3 ChMap:SWRM_TX2_CH2
+ADC3_MIXER Switch:1
+ADC3 Volume:12
+
+#disable_ultrasound_mic
+disable
+ADC3_MIXER Switch:0
+ADC3 ChMap:ZERO
+TX_AIF2_CAP Mixer DEC4:0
+TX SMIC MUX4:ZERO
+TX DEC4 MUX:MSM_DMIC
+ADC3 Volume:6
+
+#enable_ultrasound
+enable
+aw882xx_spk_sw_gpio_switch:1
+FSM_SW_GPIO:1
+aw_dev_0_prof:Receiver
+aw_dev_0_switch:Enable
+FSM_Scene:15
+FSM_Volume:255
+FSM_Stop:0
+
+#disable_ultrasound
+disable
+aw882xx_spk_sw_gpio_switch:0
+FSM_SW_GPIO:0
+aw_dev_0_prof:Music
+aw_dev_0_switch:Disable
+FSM_Stop:1
+FSM_Volume:255
+FSM_Scene:0
+
+#typec_capture_headset_left
+#typec_capture_headset_right
+enable
+TX DEC0 MUX:SWR_MIC
+TX SMIC MUX0:SWR_MIC4
+TX_AIF1_CAP Mixer DEC0:1
+DEC0_BCS Switch:1
+ADC2 MUX:INP2
+ADC2 ChMap:SWRM_TX2_CH1
+MBHC ChMap:SWRM_TX3_CH2
+BCS Channel:CH9
+ADC2_MIXER Switch:1
+
+disable
+TX DEC0 MUX:MSM_DMIC
+TX SMIC MUX0:ZERO
+DEC0_BCS Switch:0
+TX_AIF1_CAP Mixer DEC0:0
+ADC2 MUX:INP2
+ADC2 ChMap:ZERO
+MBHC ChMap:ZERO
+BCS Channel:CH0
+ADC2_MIXER Switch:0
+
+#typec_playback_headset
+#enable_headset
+enable
+RX_MACRO RX0 MUX:AIF1_PB
+RX_MACRO RX1 MUX:AIF1_PB
+RX INT0_1 MIX1 INP0:RX0
+RX INT1_1 MIX1 INP0:RX1
+RX INT0 DEM MUX:CLSH_DSM_OUT
+RX INT1 DEM MUX:CLSH_DSM_OUT
+RX_COMP1 Switch:1
+RX_COMP2 Switch:1
+HPHL_COMP Switch:1
+HPHR_COMP Switch:1
+HPHL_RDAC Switch:1
+HPHR_RDAC Switch:1
+
+#disable_headset
+disable
+RX_MACRO RX0 MUX:ZERO
+RX_MACRO RX1 MUX:ZERO
+RX INT0_1 MIX1 INP0:ZERO
+RX INT1_1 MIX1 INP0:ZERO
+RX INT0 DEM MUX:NORMAL_DSM_OUT
+RX INT1 DEM MUX:NORMAL_DSM_OUT
+RX_COMP1 Switch:0
+RX_COMP2 Switch:0
+HPHL_COMP Switch:0
+HPHR_COMP Switch:0
+HPHL_RDAC Switch:0
+HPHR_RDAC Switch:0
+

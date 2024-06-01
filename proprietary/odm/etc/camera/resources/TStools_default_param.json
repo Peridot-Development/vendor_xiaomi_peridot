@@ -1,0 +1,61 @@
+{
+    "##note": "配置规则: 从json读取程度值",
+    "TrueSight": "",
+    "CaptureFusionDefaultConfigPath": "truesight_config_front.json",
+    "PreviewFusionDefaultConfigPath": "truesight_config_front.json",
+    "CaptureDefaultEffectPath": "render/Effect/effect_mode_front.json",
+    "PreviewDefaultEffectPath": "render/Effect/effect_mode_front.json",
+    "TStoolsParam": [
+        {
+            "##kParameterFlag_ColorToneAlpha##": "基底色彩滤镜",
+            "ColorToneDegree": 0,
+            "##kParameterFlag_Spotless##": "祛斑祛痘程度",
+            "SpotlessDegree": 0.4,
+            "##kParameterFlag_FaceRetouch##": "磨皮程度",
+            "FaceRetouchDegree": 0.4,
+
+            "##kParameterFlag_BrightEye##": "亮眼程度",
+            "CatchLightDegree": 0.0,
+            "##kParameterFlag_LightenPouch##": "祛黑眼圈程度",
+            "TearTroughDegree": 0.0,
+            "##kParameterFlag_Rhytidectomy##": "祛法令纹程度",
+            "LaughLineDegree": 0.0,
+            "##kParameterFlag_E2Ewrinkle##": "ai祛纹程度",
+            "E2EwrinkleDegree": 0.0,
+
+            "##kParameterFlag_FaceStereoShadow##": "五官立体程度",
+            "FaceStereoShadowDegree": 0.0,
+
+            "##kParameterFlag_SkinToneMapping##": "美白程度",
+            "SkinToneDegree": 0.0,
+
+            "##kParameterFlag_MakeupFilterAlpha##": "妆容程度",
+            "MakeupDegree": 0.0,
+
+            "##kParameterFlag_FaceLift##": "瘦脸程度",
+            "FaceLiftDegree": 0.0,
+            "##kParameterFlag_FacialRefine_EyeZoom##": "眼睛大小程度",
+            "EyeSizeDegree": 0.0,
+            "##kParameterFlag_FacialRefine_Nose##": "鼻子大小程度 [默认0.5]",
+            "NoseSizeDegree": 0.5,
+            "##kParameterFlag_FacialRefine_Chin##": "下巴程度 [默认0.5]",
+            "ChinDegree": 0.5,
+            "##kParameterFlag_FacialRefine_MouthSize##": "嘴巴大小程度[默认0.5]",
+            "MouthSizeDegree": 0.5,
+            "##kParameterFlag_FacialRefine_HairLine##": "发际线程度[默认0.5]",
+            "HairLineDegree": 0.5,
+            "##kParameterFlag_FacialRefine_SkullEnhance##": "蓬蓬发程度",
+            "SkullEnhanceDegree": 0,
+            "##kParameterFlag_HeadNarrow##": "缩头/小头程度",
+            "HeadNarrowDegree": 0.0,
+            "##kParameterFlag_FacialRefine_Temple##": "太阳穴程度[默认0.5]",
+            "TempleDegree": 0.5,
+            "##kParameterFlag_FacialRefine_CheekBone##": "颧骨程度[默认0.5]",
+            "CheekBoneDegree": 0.5,
+            "##kParameterFlag_FacialRefine_NoseTip##": "鼻尖程度[默认0.5]",
+            "NoseTipDegree": 0.5,
+            "##kParameterFlag_FacialRefine_Jaw##": "下颌程度[默认0.5]",
+            "JawDegree": 0.5
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+# only customized property
+ro.product.odm.marketname=POCO F6 Deadpool Edition
+ro.product.name_for_attestation=peridot_in
+ro.product.model_for_attestation=24069PC21I

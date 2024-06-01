@@ -1,0 +1,4 @@
+service vendor.fbo-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.fbo@1.0-service
+    class hal
+    user root
+    group root

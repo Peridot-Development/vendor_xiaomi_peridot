@@ -1,0 +1,59 @@
+LOOP=1000
+LEN=40000
+BASE=0xfc000000
+ADDR=0x0
+
+lo=0
+base=0
+
+BLACK="\033[0;30m"
+BLUE="\033[0;34m"
+GREEN="\033[0;32m"
+GREY="\033[0;90m"
+CYAN="\033[0;36m"
+RED="\033[0;31m"
+PURPLE="\033[0;35m"
+BROWN="\033[0;33m"
+WHITE="\033[0;37m"
+BOLD="\033[1m"
+COLOR_RESET="\033[0m"
+
+function cknz() {
+	if [ $2 -ne 0 ]; then
+		echo -n " $RED$1:$2$COLOR_RESET"
+	else
+		echo -n " $GREEN$1:$2$COLOR_RESET"
+	fi
+}
+
+function show_ret() {
+	rc=`cat st_success`
+	echo -n "Success:$rc"
+	rc=`cat st_write_err` 
+	cknz "WriteErr" $rc
+	rc=`cat st_read_err` 
+	cknz "ReadErr" $rc
+	rc=`cat st_mismatch` 
+	cknz "MissMatch" $rc
+	echo ""
+}
+
+cd /d/xm_ispv4/ispv4_regops/
+echo $LEN > st_length
+echo $ADDR > addr
+
+while [ lo -lt LOOP ]
+do
+lo=$((lo+1))
+base_inc=$((lo<<16))
+base=$((BASE+base_inc))
+base=$(printf "0x%08x" $base)
+echo $base > st_base
+echo "================ $BOLD$lo$COLOR_RESET ================"
+echo "======== speed[`cat speed`] ========"
+real_base=$(printf "%08x" `cat st_base`)
+echo "======== base[$real_base] ========"
+echo ">>>>>>>>>>>>>>>>>>>>>>>> test [$1]"
+echo $1 > stress_test
+show_ret
+done

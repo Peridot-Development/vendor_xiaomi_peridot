@@ -1,0 +1,95 @@
+{
+	"Type": "Config",
+	"TrueSight": [
+		{
+			"##Mode": "Preview: 预览; Capture: 拍后",
+			"Mode": "Preview",
+			"##UseFor": "Initialize: 用于初始化时; Runtime: 用于运行时; All: 同时用于初始化与运行时",
+			"UseFor": "Initialize",
+			"Face": {
+				"EnablePrecisionLow": true,
+				"EnableNPU": false,
+				"EnableStandaloneThread": false,
+				"EnableInnerFD": false,
+				"EnableFDASync": true,
+				"FDNumThread": 0,
+				"MaxFaceCount": 3,
+				"MinFaceRatio": 0.05,
+				"FDIntervalFrames": 7,
+				"FDIntervalFramesSpeedupRatio": 1.5,
+				"FaceRollType": 0,
+				"FaceboxAdjustType": 2,
+				"EnableMouthMask": false,
+				"EnableMouthRobost": false,
+				"EnableEyeRobost": false,
+				"EnableForehead": false,
+				"EnableFaceParsing": false,
+				"EnableFace3D": false,
+				"FaceLandmarkType": 16,
+				"NumThread": 3,
+				"ModeThread": 1,
+				"MaxFaceAlignmentCount": 10,
+				"FaceConfidenceKillThreshold": 0.5,
+				"EnableGender": true,
+				"EnableAgeDivide": false,
+				"EnableAge": false
+			},
+			"XReality": {
+				"##Strategy": "Std: 标准模式; Lite: 轻量模式",
+				"Strategy": "Std",
+				"EnableE2EacneLight": false
+			}
+		},
+		{
+			"Mode": "Preview",
+			"UseFor": "Runtime"
+		},
+		{
+			"Mode": "Capture",
+			"UseFor": "Initialize",
+			"Face": {
+				"EnablePrecisionLow": true,
+				"EnableNPU": false,
+				"EnableStandaloneThread": false,
+				"EnableInnerFD": false,
+				"EnableFDASync": true,
+				"FDNumThread": 0,
+				"MaxFaceCount": 3,
+				"MinFaceRatio": 0.05,
+				"FDIntervalFrames": 7,
+				"FDIntervalFramesSpeedupRatio": 1.5,
+				"FaceRollType": 0,
+				"FaceboxAdjustType": 2,
+				"EnableMouthMask": false,
+				"EnableMouthRobost": false,
+				"EnableEyeRobost": false,
+				"EnableForehead": false,
+				"EnableFaceParsing": false,
+				"EnableFace3D": false,
+				"FaceLandmarkType": 17,
+				"NumThread": 1,
+				"ModeThread": 0,
+				"FaceConfidenceKillThreshold": 0.5,
+				"EnableGender": false,
+				"EnableAgeDivide": false,
+				"EnableAge": false
+			},
+			"XReality": {
+				"E2E": {
+					"E2EWarp":0,
+					"EnableE2Eacne": true,
+					"EnableE2Ewrinkle": false,
+					"EnableE2EskinUnify": false,
+					"EnableE2Eeyebrow": false,
+					"E2EacneHardwareAccelerationType": 2,
+					"E2EwrinkleHardwareAccelerationType": 1,
+					"E2EskinUnifyHardwareAccelerationType": 1,
+					"E2EeyebrowHardwareAccelerationType": 1
+				},
+				"FaceRetouch": {
+					"EnableFaceRetouch": false
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,381 @@
+{
+  "config":{
+    "hw_platform": ["MTP", "QRD", "Dragon", "Surf", "HDK", "RCM"],
+    "soc_id": ["519", "557", "536", "577", "614"]
+  },
+  "gt9786_x_platform":{
+    "owner": "gt9786",
+    ".config":{
+      "owner": "gt9786",
+      "bus_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "bus_instance":{ "type": "int", "ver": "0",
+        "data": "7"
+      },
+      "slave_config":{ "type": "int", "ver": "0",
+        "data": "0x18"
+      },
+      "min_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "1000"
+      },
+      "max_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "1000"
+      },
+      "reg_addr_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "dri_irq_num":{ "type": "int", "ver": "1",
+        "data": "66"
+      },
+      "irq_pull_type":{ "type": "int", "ver": "0",
+        "data": "3"
+      },
+      "irq_is_chip_pin":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "irq_drive_strength":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "irq_trigger_type":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "num_rail":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "rail_on_state":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "vdd_rail":{ "type": "str", "ver": "1",
+        "data": "/pmic/client/sensor_vdd_2"
+      },
+      "vddio_rail":{ "type": "str", "ver": "1",
+        "data": "/pmic/client/sensor_vddio"
+      },
+      "rigid_body_type":{ "type": "int", "ver": "0",
+      "data": "0"
+      }
+    }
+  },
+  "gt9786_y_platform":{
+    "owner": "gt9786",
+    ".config":{
+      "owner": "gt9786",
+      "bus_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "bus_instance":{ "type": "int", "ver": "0",
+        "data": "7"
+      },
+      "slave_config":{ "type": "int", "ver": "0",
+        "data": "0x19"
+      },
+      "min_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "1000"
+      },
+      "max_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "1000"
+      },
+      "reg_addr_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "dri_irq_num":{ "type": "int", "ver": "1",
+        "data": "66"
+      },
+      "irq_pull_type":{ "type": "int", "ver": "0",
+        "data": "3"
+      },
+      "irq_is_chip_pin":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "irq_drive_strength":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "irq_trigger_type":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "num_rail":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "rail_on_state":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "vdd_rail":{ "type": "str", "ver": "1",
+        "data": "/pmic/client/sensor_vdd_2"
+      },
+      "vddio_rail":{ "type": "str", "ver": "1",
+        "data": "/pmic/client/sensor_vddio"
+      },
+      "rigid_body_type":{ "type": "int", "ver": "0",
+      "data": "0"
+      }
+    }
+  },
+  "gt9786_adrs_platform":{
+    "owner": "gt9786",
+    ".config":{
+      "owner": "gt9786",
+      "bus_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "bus_instance":{ "type": "int", "ver": "0",
+        "data": "7"
+      },
+      "slave_config":{ "type": "int", "ver": "0",
+        "data": "0x0D"
+      },
+      "min_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "1000"
+      },
+      "max_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "1000"
+      },
+      "reg_addr_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "dri_irq_num":{ "type": "int", "ver": "0",
+        "data": "210"
+      },
+      "irq_pull_type":{ "type": "int", "ver": "0",
+        "data": "3"
+      },
+      "irq_is_chip_pin":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "irq_drive_strength":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "irq_trigger_type":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "num_rail":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "rail_on_state":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "vdd_rail":{ "type": "str", "ver": "1",
+        "data": "/pmic/client/sensor_vdd_2"
+      },
+      "vddio_rail":{ "type": "str", "ver": "1",
+        "data": "/pmic/client/sensor_vddio"
+      },
+      "rigid_body_type":{ "type": "int", "ver": "0",
+      "data": "0"
+      }
+    }
+  },
+  "gt9786_gyro_scp_platform":{
+    "owner": "gt9786",
+    ".config":{
+      "owner": "gt9786",
+      "bus_type":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "bus_instance":{ "type": "int", "ver": "0",
+        "data": "5"
+      },
+      "slave_config":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "min_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "400"
+      },
+      "max_bus_speed_khz":{ "type": "int", "ver": "1",
+        "data": "5000"
+      },
+      "reg_addr_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "dri_irq_num":{ "type": "int", "ver": "0",
+        "data": "210"
+      },
+      "irq_pull_type":{ "type": "int", "ver": "0",
+        "data": "3"
+      },
+      "irq_is_chip_pin":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "irq_drive_strength":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "irq_trigger_type":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "num_rail":{ "type": "int", "ver": "2",
+        "data": "1"
+      },
+      "rail_on_state":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "vddio_rail":{ "type": "str", "ver": "0",
+        "data": "/pmic/client/sensor_vddio"
+      },
+      "rigid_body_type":{ "type": "int", "ver": "0",
+      "data": "0"
+      }
+    },
+    ".address":{
+      "owner": "gt9786",
+      "i2c_address":{ "type": "flt", "ver": "0",
+        "data": "106"
+      },
+      "i3c_address":{ "type": "flt", "ver": "0",
+        "data": "10"
+      }
+    }
+  },
+  "gt9786_platform":{
+    "owner": "gt9786",
+    ".vcmdirection":{
+      "owner": "gt9786",
+      "vcm_id_0":{ "type": "int", "ver": "2",
+        "data": "0x00"
+      },
+      "x_dir_0_0":{ "type": "int", "ver": "2",
+        "data": "0"
+      },
+      "y_dir_0_0":{ "type": "int", "ver": "2",
+        "data": "-1"
+      },
+      "x_dir_1_0":{ "type": "int", "ver": "2",
+        "data": "1"
+      },
+      "y_dir_1_0":{ "type": "int", "ver": "2",
+        "data": "0"
+      },
+      "vcm_id_1":{ "type": "int", "ver": "1",
+        "data": "-1"
+      },
+      "x_dir_0_1":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "y_dir_0_1":{ "type": "int", "ver": "1",
+        "data": "-1"
+      },
+      "x_dir_1_1":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "y_dir_1_1":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "vcm_id_2":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "x_dir_0_2":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "y_dir_0_2":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "x_dir_1_2":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "y_dir_1_2":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "vcm_id_3":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "x_dir_0_3":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "y_dir_0_3":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "x_dir_1_3":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "y_dir_1_3":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "vcm_id_4":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "x_dir_0_4":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "y_dir_0_4":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "x_dir_1_4":{ "type": "int", "ver": "0",
+        "data": "-1"
+      },
+      "y_dir_1_4":{ "type": "int", "ver": "0",
+        "data": "0"
+      }
+    },
+    ".chipdirection":{
+      "owner": "gt9786",
+      "x_dir_0":{ "type": "int", "ver": "0",
+        "data": "1"
+      },
+      "y_dir_0":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "x_dir_1":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "y_dir_1":{ "type": "int", "ver": "0",
+        "data": "1"
+      }
+    },
+    ".params":{
+      "owner": "gt9786",
+      "param1": {
+        "ver": "0", "type": "flt", "data": "0"
+      },
+      "param2": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param3": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param4": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param5": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param6": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param7": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param8": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param9": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param10": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param11": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param12": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param13": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param14": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param15": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param16": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param17": {
+          "ver": "0", "type": "flt", "data": "0"
+      },
+      "param18": {
+          "ver": "0", "type": "flt", "data": "0"
+      }
+    }
+  }
+}

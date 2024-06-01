@@ -1,0 +1,26 @@
+{
+    "name":"SMotion",
+    "version":"1.0",
+    "product":"peridot",
+
+    "SUPER CORE": {
+        "MODE":10001,
+        "DEFAULT":true,
+        "APP":[
+        ]
+    },
+
+    "SUPER CHIP": {
+        "MODE":10002,
+        "DEFAULT":true,
+        "APP":[
+        ]
+    },
+
+    "SUPER ALGO": {
+        "MODE":10003,
+        "DEFAULT":true,
+        "APP":[
+        ]
+    }
+}

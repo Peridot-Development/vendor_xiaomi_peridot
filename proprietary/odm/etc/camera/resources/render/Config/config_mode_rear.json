@@ -1,0 +1,73 @@
+{
+	"Type": "Config",
+	"TrueSight": [
+		{
+			"Mode": "Preview",
+			"UseFor": "Initialize",
+			"Face": {
+				"EnableFace": false,
+				"EnablePrecisionLow": true,
+				"EnableNPU": false,
+				"EnableStandaloneThread": false,
+				"EnableInnerFD": false,
+				"MaxFaceCount": 3,
+				"FaceboxAdjustType": 2,
+				"EnableMouthMask": false,
+				"EnableMouthRobost": false,
+				"EnableEyeRobost": false,
+				"EnableForehead": false,
+				"EnableFaceParsing": false,
+				"EnableFace3D": false,
+				"NumThread": 3,
+				"ModeThread": 1,
+				"EnableGender": true,
+				"EnableAgeDivide": false,
+				"EnableAge": false
+			},
+			"XReality": {
+				"Strategy": "Std",
+				"EnableE2EacneLight": false
+			}
+		},
+		{
+			"Mode": "Capture",
+			"UseFor": "Initialize",
+			"Face": {
+				"EnableFace": false,
+				"EnablePrecisionLow": true,
+				"EnableNPU": false,
+				"EnableStandaloneThread": false,
+				"EnableInnerFD": false,
+				"MaxFaceCount": 3,
+				"FaceboxAdjustType": 2,
+				"EnableMouthMask": false,
+				"EnableMouthRobost": false,
+				"EnableEyeRobost": false,
+				"EnableForehead": false,
+				"EnableFaceParsing": false,
+				"EnableFace3D": false,
+				"NumThread": 1,
+				"ModeThread": 0,
+				"EnableGender": false,
+				"EnableAgeDivide": false,
+				"EnableAge": false
+			},
+			"XReality": {
+				"E2E": {
+					"E2EWarp":0,
+					"EnableE2Eacne": false,
+					"EnableE2Ewrinkle": false,
+					"EnableE2EskinUnify": false,
+					"EnableE2Eeyebrow": false,
+					"E2EacneHardwareAccelerationType": 2,
+					"E2EwrinkleHardwareAccelerationType": 1,
+					"E2EskinUnifyHardwareAccelerationType": 1,
+					"E2EeyebrowHardwareAccelerationType": 1
+				},
+				"FaceRetouch": {
+					"EnableFaceRetouch": false
+				}
+			}
+		}
+	]
+}

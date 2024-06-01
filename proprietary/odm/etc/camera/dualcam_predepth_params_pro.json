@@ -1,0 +1,59 @@
+{
+  "//": "Global parameters",
+  "StructGlobal": {
+    "StructMask": {
+      "paramSwitch": 2,
+      "paramaiMaskDownSample": 4,
+      "parammImaskW": 960,
+      "parammImaskH": 720,
+      "paramDetModel": "human_detect",
+      "paramSegModel": "portrait_blur"
+    },
+    "StructAiDepth": {
+      "paramSwitch": 1,
+      "paramDepthW": 1024
+    },
+    "StructDenseNN": {
+      "paramSwitch": 1,
+      "paramDeploySwitchA": 0,
+      "paramDeploySwitchB": 1,
+      "paramDeploySwitchC": 1,
+      "paramDeploySwitchD": 1,
+      "paramSpDispScale": 4.0,
+      "StructModel1": {
+        "paramVer": "6.22",
+        "paramDepthW": 1024,
+        "paramDepthH": 768,
+        "paramDepthQSL": 0.000072317373,
+        "paramDepthQOL": -29158.0,
+        "paramDepthQSS": 0.000601360516,
+        "paramDepthQOS": -3581.0,
+        "paramDepthQSD": 0.000943084189,
+        "paramDepthQOD": -8067.0
+      },
+      "StructModel2": {
+        "paramVer": "8.14",
+        "paramDepthW": 512,
+        "paramDepthH": 512,
+        "paramDepthQSL": 0.000072317373,
+        "paramDepthQOL": -29158.0,
+        "paramDepthQSS": 0.000799827103,
+        "paramDepthQOS": -3428.0,
+        "paramDepthQSM": 0.000015169498,
+        "paramDepthQOM": 0.0,
+        "paramDepthQSD": 0.001107566874,
+        "paramDepthQOD": -5324.0
+      }
+    },
+    "StructMultiThread": {
+      "paramMaskThreadSwitch": 1,
+      "paramBgFilterSwitch": 0,
+      "paramAiDepthThreadSwitch": 1
+    },
+    "StructDspGpu": {
+      "paramBmDspSwitch": 1,
+      "paramMatteGpuSwitch": 1
+    },
+    "paramIsTrustAfCode": 1
+  }
+}

@@ -1,0 +1,162 @@
+{
+    "PipelineName": "FrontBokehSnapshot",
+    "NodesList": {
+      "Node": [
+        {
+            "NodeName": "com.xiaomi.plugin.frontbokeh",
+            "NodeInstance": "FrontBokehInstance0"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.arcportraitrawhdr",
+            "NodeInstance": "RawHDRInstance0"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.offlinepostproc",
+            "NodeInstance": "IdealRaw2YuvInstance0",
+            "NodeProperty":[
+                {
+                         "NodePropertyName":"NodeMask",
+                         "NodePropertyValue":6
+                }
+            ]
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.swflip",
+            "NodeInstance": "SwflipInstance"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.portraitrepair",
+            "NodeInstance": "PortraitRepairInstance0",
+            "NodeProperty":[
+              {
+                  "NodePropertyName":"NodeMask",
+                  "NodePropertyValue":1
+              }
+            ]
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.tsskinbeautifier",
+            "NodeInstance": "SkinBeautifierInstance0"
+        }
+      ]
+    },
+    "PortLinkages": {
+        "Link": [
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SourceBuffer"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "RawHDRInstance0",
+                "PortFormat": "RAW16"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "RawHDRInstance0",
+                "PortFormat": "RAW16"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "IdealRaw2YuvInstance0",
+                "PortFormat": "RAW16"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "IdealRaw2YuvInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "PortraitRepairInstance0",
+                "PortFormat": "YUV420_NV12",
+                "PortFollowType": 2,
+                "FollowPortId": 0
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "PortraitRepairInstance0",
+                "PortFormat": "YUV420_NV12",
+                "PortFollowType": 2,
+                "FollowPortId": 0
+            },
+            "DstPort": {
+              "PortId": 0,
+                "NodeInstance": "SkinBeautifierInstance0",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SkinBeautifierInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "SwflipInstance",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SwflipInstance",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "FrontBokehInstance0",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "FrontBokehInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "SinkBuffer0",
+                "PortFormat": "YUV420_NV12",
+                "ChildPipeline": "SdkSnapshot",
+                "ChildJsonName": "sdksnapshot.json",
+                "ChildSrcNodePortId":0,
+                "ChildSrcNode":"virtualInstanceSdk"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 1,
+                "NodeInstance": "FrontBokehInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 1,
+                "NodeInstance": "SinkBuffer1",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 2,
+                "NodeInstance": "FrontBokehInstance0",
+                "PortFormat": "Y16"
+            },
+            "DstPort": {
+                "PortId": 2,
+                "NodeInstance": "SinkBuffer2",
+                "PortFormat": "Y16"
+            }
+        }
+      ]
+    }
+}

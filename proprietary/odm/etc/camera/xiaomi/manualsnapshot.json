@@ -1,0 +1,67 @@
+{
+    "PipelineName": "manualsnapshot",
+    "NodesList": {
+      "Node": [
+        {
+            "NodeName": "com.xiaomi.plugin.ldc",
+            "NodeInstance": "LDCInstance0"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.depurple",
+            "NodeInstance": "DepurpleInstance0",
+            "NodeProperty":[
+              {
+                   "NodePropertyName":"NodeMask",
+                   "NodePropertyValue":1
+              }
+            ]
+        }
+      ]
+    },
+    "PortLinkages": {
+        "Link": [
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SourceBuffer"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "DepurpleInstance0",
+                "PortFormat": "YUV420_NV12",
+                "PortFollowType":2,
+                "FollowPortId":0
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "DepurpleInstance0",
+                "PortFormat": "YUV420_NV12",
+                "PortFollowType":2,
+                "FollowPortId":0
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "LDCInstance0",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "LDCInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "SinkBuffer",
+                "ChildPipeline": "SdkSnapshot",
+                "ChildJsonName": "sdksnapshot.json",
+                "ChildSrcNodePortId":0,
+                "ChildSrcNode":"virtualInstanceSdk"
+            }
+        }
+        ]
+    }
+  }

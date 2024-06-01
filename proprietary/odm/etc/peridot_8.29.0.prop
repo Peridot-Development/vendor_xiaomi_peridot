@@ -1,0 +1,3 @@
+# only customized property
+ro.product.name_for_attestation=peridot_in
+ro.product.model_for_attestation=24069PC21I

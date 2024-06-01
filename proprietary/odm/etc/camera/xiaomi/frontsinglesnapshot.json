@@ -1,0 +1,143 @@
+{
+    "PipelineName": "FrontSingleSnapshot",
+    "NodesList": {
+      "Node": [
+        {
+            "NodeName": "com.xiaomi.plugin.swflip",
+            "NodeInstance": "SwflipInstance"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.arcportraitrawhdr",
+            "NodeInstance": "RawHDRInstance0"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.offlinepostproc",
+            "NodeInstance": "IdealRaw2YuvInstance0",
+            "NodeProperty":[
+                {
+                    "NodePropertyName":"NodeMask",
+                    "NodePropertyValue":6
+                }
+            ]
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.tsskinbeautifier",
+            "NodeInstance": "SkinBeautifierInstance0"
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.portraitrepair",
+            "NodeInstance": "PortraitRepairInstance0",
+            "NodeProperty":[
+                {
+                    "NodePropertyName": "NodeMask",
+                    "NodePropertyValue": 1
+                }
+            ]
+        },
+        {
+            "NodeName": "com.xiaomi.plugin.arcfrontsll",
+            "NodeInstance": "ArcsoftFrontSLLInstance0",
+            "NodeProperty": [
+              {
+                "NodePropertyName": "NodeMask",
+                "NodePropertyValue": 16
+              }
+            ]
+        }
+      ]
+    },
+    "PortLinkages": {
+        "Link": [
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SourceBuffer"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "ArcsoftFrontSLLInstance0",
+                "PortFormat": "RAW16"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "ArcsoftFrontSLLInstance0",
+                "PortFormat": "RAW16"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "RawHDRInstance0",
+                "PortFormat": "RAW16"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "RawHDRInstance0",
+                "PortFormat": "RAW16"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "IdealRaw2YuvInstance0",
+                "PortFormat": "RAW16"
+          }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "IdealRaw2YuvInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "PortraitRepairInstance0",
+                "PortFormat": "YUV420_NV12",
+                "PortFollowType": 2,
+                "FollowPortId": 0
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "PortraitRepairInstance0",
+                "PortFormat": "YUV420_NV12",
+                "PortFollowType": 2,
+                "FollowPortId": 0
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "SkinBeautifierInstance0",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SkinBeautifierInstance0",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "SwflipInstance",
+                "PortFormat": "YUV420_NV12"
+            }
+        },
+        {
+            "SrcPort": {
+                "PortId": 0,
+                "NodeInstance": "SwflipInstance",
+                "PortFormat": "YUV420_NV12"
+            },
+            "DstPort": {
+                "PortId": 0,
+                "NodeInstance": "SinkBuffer",
+                "ChildPipeline": "SdkSnapshot",
+                "ChildJsonName": "sdksnapshot.json",
+                "ChildSrcNodePortId":0,
+                "ChildSrcNode":"virtualInstanceSdk"
+            }
+        }
+        ]
+    }
+}

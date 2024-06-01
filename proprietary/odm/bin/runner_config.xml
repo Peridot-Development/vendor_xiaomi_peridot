@@ -1,0 +1,29 @@
+<config>
+​
+    <speaker_channels_from_engine>1</speaker_channels_from_engine>
+​
+    <sound_rate>96000</sound_rate>
+    <snd_samples_per_channel>960</snd_samples_per_channel>
+    <sound_format_mic>PCM_FORMAT_S16_LE</sound_format_mic>
+    <sound_format_spk>PCM_FORMAT_S32_LE</sound_format_spk>
+​
+​
+    <card_mic>100</card_mic>
+    <card_spk>100</card_spk>
+    <device_mic>101</device_mic>
+    <device_spk>100</device_spk>
+    <num_channels_mic>1</num_channels_mic>
+    <num_channels_spk>2</num_channels_spk>
+    <period_cnt_mic>4</period_cnt_mic>
+    <period_cnt_spk>4</period_cnt_spk>
+    <period_size_mic>1024</period_size_mic>
+    <period_size_spk>1024</period_size_spk>
+    <frame_cnt>1</frame_cnt>
+    <index_mic>0</index_mic>
+​
+    <device_mixer_ctrls></device_mixer_ctrls>
+​
+	<spkr_intf_name>TDM-LPAIF_VA-RX-PRIMARY-VIRT-0</spkr_intf_name>
+	<mic_intf_name>CODEC_DMA-LPAIF_RXTX-TX-4</mic_intf_name>
+​
+</config>

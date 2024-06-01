@@ -1,0 +1,65 @@
+#!/system/bin/sh
+
+###############################################################################
+#
+# ispv4 chip test: spi read/write
+#
+# ispv4_spi_rw
+#
+# This script lets you test ispv4 chip on android phone.
+#
+###############################################################################
+
+# handy color vars for pretty prompts
+BLACK="\033[0;30m"
+BLUE="\033[0;34m"
+GREEN="\033[0;32m"
+GREY="\033[0;90m"
+CYAN="\033[0;36m"
+RED="\033[0;31m"
+PURPLE="\033[0;35m"
+BROWN="\033[0;33m"
+WHITE="\033[0;37m"
+BOLD="\033[1m"
+COLOR_RESET="\033[0m"
+
+##
+# prints the script usage
+##
+function usage() {
+	echo -e ""
+	echo -e "Usage: $0 reg [val]"
+	echo -e ""
+	echo -e "        domo read 0x0: $0 0x0 "
+	echo -e "        domo write 0x0=0xaa: $0 0x0 0xaa"
+	echo -e ""
+}
+
+RET=0
+function spi_reg_write() {
+	echo $1 >/d/xm_ispv4/ispv4_regops/addr
+	echo $2 >/d/xm_ispv4/ispv4_regops/write
+	RET=$?
+}
+
+function spi_reg_read() {
+	echo $1 >/d/xm_ispv4/ispv4_regops/addr
+	rd=$(cat /d/xm_ispv4/ispv4_regops/read)
+	RET=$?
+	if [ $RET -ne "0" ]; then
+		echo "0xffffffff"
+	else
+		echo ${rd:13:22}
+	fi
+}
+
+if [ $# = 2 ]; then
+	spi_reg_write $1 $2
+	exit $RET
+elif [ $# = 1 ]; then
+	spi_reg_read $1
+	exit $RET
+else
+	usage
+fi
+

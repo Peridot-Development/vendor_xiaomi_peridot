@@ -1,0 +1,9 @@
+{
+	"Type": "ConfigCategory",
+	"TrueSight": [
+		{
+			"FusionConfigurePath": "render/Config/config_mode_rear.json",
+			"EffectConfigurePath": "render/Effect/effect_mode_rear.json"
+		}
+	]
+}

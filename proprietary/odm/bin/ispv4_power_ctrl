@@ -1,0 +1,172 @@
+#!/system/bin/sh
+
+function usage() {
+  echo  ""
+  echo  "Usage: $0 [options]"
+  echo  ""
+  echo  "  Where options is one or more of:"
+  echo  "  pon      Pmic pon on"
+  echo  "  poff     Pmic pon off"
+  echo  "  clkon    Clk on"
+  echo  "  clkoff   Clk off"
+  echo  "  rrst     Rst release"
+  echo  "  drst     Rst de-release"
+  echo  "  cpuon    CPU power on"
+  echo  "  cpuoff   CPU power off"
+  echo  "  chipon   Power on whole sequence"
+  echo  "  cpipoff  Power off whole sequence"
+  echo  "  -h       Prints Help text"
+  echo  "  -d       Print v400 log"
+  echo  "  -c       Clean v400 log"
+  echo  ""
+}
+
+function run_pmic_ctrl() {
+	if [ $1 -eq 0 ];then
+		echo "run pmic off"
+		echo 0 > /d/ispv4_ctrl/ispv4_pmic_pon
+	else
+		echo "run pmic on"
+		echo 1 > /d/ispv4_ctrl/ispv4_pmic_pon
+	fi
+	if [ $? -eq 0 ];then
+		echo "+++++++++++++++++cmd executes success++++++++++++++++++"
+	else
+		echo "-----------------cmd executes fail---------------------"
+	fi
+
+	echo "pmic pon gpio173 status:"
+	cat /d/gpio | grep gpio173
+	echo "pmic pwr_gd gpio172 status:"
+	cat /d/gpio | grep gpio172
+}
+
+function run_clk_ctrl() {
+
+	if [ $1 -eq 0 ];then
+		echo "run clk off"
+		echo 0 > /d/ispv4_ctrl/ispv4_clk_enable
+	else
+		echo "run clk on"
+		echo 1 > /d/ispv4_ctrl/ispv4_clk_enable
+	fi
+	if [ $? -eq 0 ];then
+		echo "+++++++++++++++++cmd executes success++++++++++++++++++"
+	else
+		echo "-----------------cmd executes fail---------------------"
+	fi
+}
+
+function run_rst_ctrl() {
+	if [ $1 -eq 0 ];then
+		echo "run de-release rst"
+		echo 0 > /d/ispv4_ctrl/ispv4_release_rst
+	else
+		echo "run release rst"
+		echo 1 > /d/ispv4_ctrl/ispv4_release_rst
+	fi
+	if [ $? -eq 0 ];then
+		echo "+++++++++++++++++cmd executes success++++++++++++++++++"
+	else
+		echo "-----------------cmd executes fail---------------------"
+	fi
+	echo "pmic rst pin gpio174 status:"
+	cat /d/gpio | grep gpio174
+}
+
+function run_cpu_pwr_ctrl() {
+	if [ $1 -eq 0 ];then
+		echo "run power off cpu"
+		echo 0 > /d/ispv4_ctrl/ispv4_pwr_cpu
+	else
+		echo "run power on cpu"
+		echo 1 > /d/ispv4_ctrl/ispv4_pwr_cpu
+	fi
+	if [ $? -eq 0 ];then
+		echo "+++++++++++++++++cmd executes success++++++++++++++++++"
+	else
+		echo "-----------------cmd executes fail---------------------"
+	fi
+	echo "pmic pon gpio173 status:"
+	cat /d/gpio | grep gpio173
+	echo "pmic pwr_gd gpio172 status:"
+	cat /d/gpio | grep gpio172
+	echo "pmic rst pin gpio174 status:"
+	cat /d/gpio | grep gpio174
+}
+
+function run_chip_pwr_ctrl() {
+	if [ $1 -eq 0 ];then
+		echo "run power off V400 whole sequence"
+		echo 0 > /d/xm_ispv4/ispv4_pcie/pm
+		echo 0 > /d/ispv4_ctrl/ispv4_pwr_sequence
+	else
+		echo "run power on V400 whole sequence"
+		echo 1 > /d/ispv4_ctrl/ispv4_pwr_sequence
+		echo 1 > /d/xm_ispv4/ispv4_pcie/pm
+	fi
+	if [ $? -eq 0 ];then
+		echo "+++++++++++++++++cmd executes success++++++++++++++++++"
+	else
+		echo "-----------------cmd executes fail---------------------"
+	fi
+	echo "pmic pon gpio173 status:"
+	cat /d/gpio | grep gpio173
+	echo "pmic pwr_gd gpio172 status:"
+	cat /d/gpio | grep gpio172
+	echo "pmic rst pin gpio174 status:"
+	cat /d/gpio | grep gpio174
+}
+
+if [ $# -eq 0 ];then
+	usage
+	exit 0
+else
+	case $1 in
+	-h)
+		usage
+		exit 0
+		;;
+	-d)
+		dmesg | grep ispv4
+		;;
+	-c)
+		dmesg -C
+		;;
+	pon)
+		run_pmic_ctrl 1
+		;;
+	poff)
+		run_pmic_ctrl 0
+		;;
+	clkon)
+		run_clk_ctrl 1
+		;;
+	clkoff)
+		run_clk_ctrl 0
+		;;
+	rrst)
+		run_rst_ctrl 1
+		;;
+	drst)
+		run_rst_ctrl 0
+		;;
+	cpuon)
+		run_cpu_pwr_ctrl 1
+		;;
+	cpuoff)
+		run_cpu_pwr_ctrl 0
+		;;
+	chipon)
+		run_chip_pwr_ctrl 1
+		;;
+	chipoff)
+		run_chip_pwr_ctrl 0
+		;;
+	*)
+		echo "invalid argument"
+		usage
+		exit 0
+		;;
+	esac
+fi

@@ -1,0 +1,3 @@
+#GameID   GameAPK    MaxTemperature  MaxCurrent  AvgCurrent 
+100001    hok         44000          1000        900
+0         Default     44000          1000        900

@@ -1,0 +1,42 @@
+{
+	"Type":"Effect",
+	"ExtraOption":
+	{
+		"RetouchFactorType": -1
+	},
+	"TrueSight":
+	[
+		{
+			"ConfigurePath":"Effects/0_Spotless/effect.json",
+			"Index":0,
+			"Mode":"Preview"
+		},
+		{
+			"ConfigurePath":"Effects/1_SkinSmoothClassical/effect_preview.json",
+			"Index":1,
+			"Mode":"Preview"
+		},
+		{
+			"Index":3,
+			"Mode":"Capture",
+			"FaceRetouchEngine":
+			{
+				"Enable":false
+			}
+		},
+		{
+			"Index":4,
+			"Mode":"Capture",
+			"ManualSpotless":
+			{
+				"Enable":true,
+				"MaleDegreeFactor":1.0
+			}
+		},
+		{
+			"ConfigurePath":"Effects/1_SkinSmoothClassical/effect_capture.json",
+			"Index":5,
+			"Mode":"Capture"
+		}
+	]
+}

@@ -1,0 +1,9 @@
+on init
+    mkdir /dev/cpuset/vending
+    chown system system /dev/cpuset/vending
+    chown system system /dev/cpuset/vending/tasks
+    chown system system /dev/cpuset/vending/cgroup.procs
+    chmod 0664 /dev/cpuset/vending/cgroup.procs
+    chmod 0664 /dev/cpuset/vending/tasks
+    write /dev/cpuset/vending/mems 0
+    write /dev/cpuset/vending/cpus 0-7

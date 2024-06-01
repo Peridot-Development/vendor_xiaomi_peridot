@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<config>
+	<sampling>5000</sampling>
+	<hysteresis>1000</hysteresis>
+	<debug_enable>1</debug_enable>
+	<y_int>4820</y_int>
+	<threshold>45000</threshold>
+	<sensor_list>
+		<sensor>
+			<name>cpu_therm</name>
+			<slope>2.07</slope>
+		</sensor>
+		<sensor>
+			<name>flash_therm</name>
+			<slope>-1.41</slope>
+		</sensor>
+		<sensor>
+			<name>pa_therm1</name>
+			<slope>0.16</slope>
+		</sensor>
+	</sensor_list>
+</config>

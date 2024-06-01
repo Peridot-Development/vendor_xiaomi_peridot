@@ -1,0 +1,5 @@
+service vendor.xiaomi.cit.wifi-service  /vendor/bin/hw/vendor.xiaomi.cit.wifi-service
+    class hal
+    user root
+    group system
+    oneshot

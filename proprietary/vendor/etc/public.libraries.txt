@@ -1,0 +1,14 @@
+libqti-perfd-client.so
+libadsprpc.so
+libcdsprpc.so
+libsdsprpc.so
+libfastcvopt.so
+libOpenCL.so
+libSNPE.so
+libmialgo_ai_vision.so
+libmialgo_utils.so
+libxmi_slow_motion_mein.so
+libmiocr.so
+libmiphone_capture_bokeh.so
+libQEGA.qti.so
+libanc_single_bokeh.so

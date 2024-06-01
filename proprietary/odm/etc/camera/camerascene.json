@@ -1,0 +1,33 @@
+{
+    "configs": [
+        {
+            "name": "videocall_list",
+            "config": [
+                "defalut"
+            ]
+        },
+        {
+            "name": "highresolutionblob_list",
+            "config": [
+                "com.tencent.ttpic.module.camera.CameraActivity",
+                "com.linecorp.b612.android.activity.ActivityCamera",
+                "com.wudaokou.hippo.media.camera.CameraActivity",
+                "com.lemon.faceu.business.mainpage.MainActivity",
+                "com.mt.mtxx.camera.view.CameraActivity",
+                "com.light.beauty.publisher.PublisherActivity",
+                "com.taobao.taopai.business.record.fragment.SocialRecordVideoActivity_Module_FullScreen",
+                "com.alipay.mobile.beehive.capture.activity.CaptureActivity",
+                "com.taobao.android.litecreator.modules.record.LCRecordActivity",
+                "com.jd.lib.unification.video.recorder.VideoRecorderActivity",
+                "com.baidu.homework.common.camera.NewCameraManyQuestionsActivity",
+                "com.jd.lib.scan.lib.zxing.client.android.CaptureActivity",
+                "com.whatsapp.camera.CameraActivity",
+                "com.instagram.mainactivity.MainActivity",
+                "com.snap.mushroom.MainActivity",
+                "com.meitu.myxj.selfie.merge.activity.SelfieCameraActivity",
+                "com.instagram.modal.TransparentModalActivity",
+                "org.telegram.ui.LaunchActivity"
+            ]
+        }
+    ]
+}

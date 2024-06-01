@@ -1,0 +1,577 @@
+PolicyControlMaskLocal:11100
+memitem {
+[
+name:io_psi_full
+path:/proc/pressure/io
+item:full avg10=
+]
+}
+
+actionitem {
+
+[
+name:dropcache
+path:/proc/sys/vm/drop_caches
+]
+
+[
+name:watermark_scale_factor
+path:/proc/sys/vm/watermark_scale_factor
+]
+
+[
+name:global_reclaim
+path:/proc/global_reclaim
+]
+
+[
+name:compact_memory
+path:/proc/sys/vm/compact_memory
+]
+
+[
+name:camera_reclaim
+path:/dev/memcg/camera/provider/memory.reclaim_once
+]
+
+[
+name:critical0_reclaim
+path:/dev/memcg/mimd/critical0/memory.reclaim_once
+]
+
+[
+name:critical1_reclaim
+path:/dev/memcg/mimd/critical1/memory.reclaim_once
+]
+
+[
+name:critical2_reclaim
+path:/dev/memcg/mimd/critical2/memory.reclaim_once
+]
+
+[
+name:compact_memory
+path:/proc/sys/vm/compact_memory
+]
+
+[
+name:free_cache
+path:/dev/memcg/mimd/uid/memory.reclaim_once
+type:4
+]
+
+}
+
+policy {
+
+[
+name:		global_reclaim_8g_userdebug
+memitem:	memitem_init	memitem_init	memitem_buildtype
+algo:	        low		high		equal
+threshold:	7		1		0
+actionitem:	global_reclaim
+target:		262144
+mem_size:	8
+]
+
+[
+name:		global_reclaim_12g_userdebug
+memitem:	memitem_init	memitem_init	memitem_buildtype
+algo:	        low		high		equal
+threshold:	7		1		0
+actionitem:	global_reclaim
+target:		393216
+mem_size:	12
+]
+
+[
+name:		global_reclaim_16g_userdebug
+memitem:	memitem_init	memitem_init	memitem_buildtype
+algo:	        low		high		equal
+threshold:	7		1		0
+actionitem:	global_reclaim
+target:		393216
+mem_size:	16
+]
+
+[
+name:           global_reclaim_8g
+memitem:        memitem_init    memitem_init    memitem_buildtype    io_psi_full
+algo:           low             high            equal                low
+threshold:      7               2               1                    250
+actionitem:     global_reclaim
+target:         20131072
+mem_size:       8
+]
+
+[
+name:		global_reclaim_12g
+memitem:	memitem_init	memitem_init	memitem_buildtype    io_psi_full
+algo:	        low		high		equal		     low
+threshold:	7		2		1		     250
+actionitem:	global_reclaim
+target:		20131072
+mem_size:	12
+]
+
+[
+name:		global_reclaim_16g
+memitem:	memitem_init	memitem_init	memitem_buildtype    io_psi_full
+algo:	        low		high		equal	             low
+threshold:	7		2		1		     250
+actionitem:	global_reclaim
+target:		20131072
+mem_size:	16
+]
+
+[
+name:       global_reclaim_memcg
+memitem:    memitem_init	memitem_buildtype
+algo:       equal		equal
+threshold:  2			1
+actionitem: camera_reclaim  critical0_reclaim  critical1_reclaim  critical2_reclaim
+target:     30087500    30262144    30025000    30262144
+]
+
+[
+name:		sleep_compact
+memitem:	memitem_misc
+algo:		equal
+threshold:	1
+actionitem:	dropcache	global_reclaim	compact_memory
+target:		1		262144		1
+policy_type:	1
+]
+
+[
+name:           douyin_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      1
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           kuaishou_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      2
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           qq_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      3
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           toutiao_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      4
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           bili_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      5
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           pdd_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      6
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           taobao_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      7
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           weibo_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      8
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           dingding_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      9
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           jingdong_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      10
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           meituan_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      11
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           tengxunshipin_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      12
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           baidu_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      13
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           fanqie_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      14
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           xiguashipin_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      15
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           duowan_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      16
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           xhs_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      17
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+[
+name:           zhifubao_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      18
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           mangguotv_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      19
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           zhihu_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      20
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           baidumap_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      21
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           ximalaya_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      22
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           weipinhui_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      23
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           youku_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      24
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           xiecheng_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      25
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           weixin_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      26
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           aiqiyi_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      27
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           UC_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      28
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           qimao_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      29
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           qqbrowser_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      30
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           yingshidaquan_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      31
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           kuake_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      32
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           gaodemap_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      33
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           huya_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      34
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           douyu_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      35
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           qidian_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      36
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           tencentnews_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      37
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           fanqiechangting_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      38
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+[
+name:           douyinlite_die
+memitem:        memitem_appdie
+algo:           equal
+threshold:      39
+actionitem:     free_cache
+target:         262144
+policy_type:    4
+]
+
+}
+
+app_map {
+app:com.ss.android.ugc.aweme index:1
+app:com.smile.gifmaker index:2
+app:com.tencent.mobileqq index:3
+app:com.ss.android.article.news index:4
+app:tv.danmaku.bili index:5
+app:com.xunmeng.pinduoduo index:6
+app:com.taobao.taobao index:7
+app:com.sina.weibo index:8
+app:com.alibaba.android.rimet index:9
+app:com.jingdong.app.mall index:10
+app:com.sankuai.meituan index:11
+app:com.tencent.qqlive index:12
+app:com.baidu.searchbox index:13
+app:com.dragon.read index:14
+app:com.ss.android.article.video index:15
+app:com.duowan.reader index:16
+app:com.xingin.xhs index:17
+app:com.eg.android.AlipayGphone index:18
+app:com.hunantv.imgo.activity index:19
+app:com.zhihu.android index:20
+app:com.baidu.BaiduMap index:21
+app:com.ximalaya.ting.android index:22
+app:com.achievo.vipshop index:23
+app:com.youku.phone index:24
+app:ctrip.android.view index:25
+app:com.tencent.mm index:26
+app:com.qiyi.video index:27
+app:com.UCMobile index:28
+app:com.kmxs.reader index:29
+app:com.tencent.mtt index:30
+app:com.le123.ysdq index:31
+app:com.quark.browser index:32
+app:com.autonavi.minimap index:33
+app:com.duowan.kiwi index:34
+app:air.tv.douyu.android index:35
+app:com.qidian.QDReader index:36
+app:com.tencent.news index:37
+app:com.xs.fm index:38
+app:com.ss.android.ugc.aweme.lite index:39
+}

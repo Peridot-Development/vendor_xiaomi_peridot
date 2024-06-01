@@ -1,0 +1,57 @@
+{
+	"##":"默认DL，全关",
+	"Type":"Effect",
+	"TrueSight":
+	[
+		{
+			"Index":1,
+			"Mode":"Preview",
+			"E2ESpotless":
+			{
+				"Enable":false
+			}
+		},
+		{
+			"Index":2,
+			"Mode":"Capture",
+			"E2ESpotless":
+			{
+				"Enable":false,
+                "NonLinearUIData": [
+                    0.0,
+                    0.4,
+                    1.0
+                ],
+                "NonLinearValueData": [
+                    0.0,
+                    0.5,
+                    0.8
+                ]
+			}
+		},
+		{
+			"Index":3,
+			"Mode":"Capture",
+			"SkinUnify":
+			{
+				"Enable":false
+			}
+		},
+		{
+			"Index":4,
+			"Mode":"Capture",
+			"E2EWrinkle":
+			{
+				"Enable":false
+			}
+		},
+		{
+			"Index":5,
+			"Mode":"Capture",
+			"Eyebrow":
+			{
+				"Enable":false
+			}
+		}
+	]
+}

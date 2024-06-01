@@ -1,0 +1,281 @@
+#!/system/bin/sh
+
+###############################################################################
+#
+# ispv4 chip test: Release cpu
+#
+# ispv4_release_cpu
+#
+# This script lets you test ispv4 chip on android phone.
+#
+###############################################################################
+
+WITH_SURE=true
+LOGOPS=false
+
+PROMPT_TIMEOUT=0
+
+LOGF=/data/ispv4_cmd_log_release_cpu
+
+LOG_LINE_NUM=50
+
+DATE=$(date "+%Y-%m-%d %H:%M:%S")
+echo $DATE >$LOGF
+
+# handy color vars for pretty prompts
+BLACK="\033[0;30m"
+BLUE="\033[0;34m"
+GREEN="\033[0;32m"
+GREY="\033[0;90m"
+CYAN="\033[0;36m"
+RED="\033[0;31m"
+PURPLE="\033[0;35m"
+BROWN="\033[0;33m"
+WHITE="\033[0;37m"
+BOLD="\033[1m"
+COLOR_RESET="\033[0m"
+
+function print_ok() {
+	echo -e $GREEN "----- " $1 " -----" $COLOR_RESET
+}
+
+function print_will() {
+	echo -e $GREEN "----- Will" $1 " -----" $COLOR_RESET
+}
+
+function print_note() {
+	echo -e $WHITE "--note: " $1 $COLOR_RESET
+}
+
+function print_warn() {
+	echo -e $CYAN "--note: " $1 $COLOR_RESET
+}
+
+function print_err() {
+	echo -e $RED "--note: " $1 $COLOR_RESET
+}
+
+function wait_sure() {
+	if [ $WITH_SURE = true ]; then
+		echo -e $WHITE "--note: " $1 $COLOR_RESET
+		wait
+	fi
+}
+
+##
+# prints the script usage
+##
+function usage() {
+	echo -e ""
+	echo -e "Usage: $0 [options]"
+	echo -e ""
+	echo -e "  Where options is one or more of:"
+	echo -e ""
+	echo -e "  -h  Prints Help text"
+	echo -e "  -y  Direct operation without sure"
+	echo -e "  -l  Restore running dmesg"
+	echo -e "  -r  Release cpu"
+	echo -e "  -d  De-Release cpu"
+	echo -e "  -p  Enable cpu pll"
+	echo -e "  -s  Change spi/pci to use pll"
+	echo -e ""
+}
+
+function __exit() {
+	if [ $LOGOPS = true ]; then
+		dmesg | grep ispv4 >>$LOGF
+		print_warn "================================================"
+		print_warn "Restore log to $LOGF"
+		print_warn "---> adb pull $LOGF ./ <---"
+		print_warn "---> cat $(basename $LOGF) | less <---"
+	fi
+	exit $1
+}
+
+RUN_CMD_RET=0
+
+function run_cmd() {
+	echo -en $BLUE "--run: \" $* \" " $COLOR_RESET
+	echo "--run: $*" >>$LOGF
+	RUN_CMD_RET=$($*)
+	if [ $? -eq "0" ]; then
+		echo -e $BLUE "--ret: [ $? ]" $COLOR_RESET
+	else
+		echo -e $RED "--err: !!! [ $? ] !!! " $COLOR_RESET
+		__exit $?
+	fi
+}
+
+function run_cmd_force() {
+	echo -e $BLUE "--run: \" $* \" " $COLOR_RESET
+	echo "--run: $*" >>$LOGF
+	$*
+	if [ $? -eq "0" ]; then
+		echo -e $BLUE "--ret: [ $? ]" $COLOR_RESET
+	else
+		echo -e $RED "--err: !!! [ $? ] !!! " $COLOR_RESET
+	fi
+}
+
+function spi_reg_write() {
+	echo $1 >/d/xm_ispv4/ispv4_regops/addr
+	echo $2 >/d/xm_ispv4/ispv4_regops/write
+}
+
+function spi_reg_read() {
+	echo $1 >/d/xm_ispv4/ispv4_regops/addr
+	rd=$(cat /d/xm_ispv4/ispv4_regops/read)
+	if [ $? -ne "0" ]; then
+		echo "0xffffffff"
+	else
+		echo ${rd:13:22}
+	fi
+}
+
+##
+# wait for user to press ENTER
+# if $PROMPT_TIMEOUT > 0 this will be used as the max time for proceeding automatically
+##
+function wait() {
+	if [[ "$PROMPT_TIMEOUT" == "0" ]]; then
+		read -rs
+	else
+		read -rst "$PROMPT_TIMEOUT"
+	fi
+}
+
+CMD_RUN=false
+CMD_DOWN=false
+CMD_EN_PLL=false
+CMD_SPI_HIGH_SPEED=false
+
+while getopts ":hylrdps" opt; do
+	case $opt in
+	h)
+		usage
+		exit 0
+		;;
+	y)
+		WITH_SURE=false
+		;;
+	l)
+		LOGOPS=true
+		;;
+	r)
+		CMD_RUN=true
+		;;
+	d)
+		CMD_DOWN=true
+		;;
+	p)
+		CMD_EN_PLL=true
+		;;
+	s)
+		CMD_SPI_HIGH_SPEED=true
+		;;
+	esac
+done
+
+function check_regops() {
+	if [ ! -f "/d/xm_ispv4/ispv4_regops/addr" ]; then
+		print_warn "Not found regops"
+		__exit 1
+	fi
+}
+
+function set_bit() {
+	run_cmd spi_reg_read $1
+	set_val=$(($RUN_CMD_RET | $2))
+	set_val=$(printf "%08x" $set_val)
+	set_val=0x${set_val:0-8:8}
+	run_cmd spi_reg_write $1 $set_val
+}
+
+function clear_bit() {
+	run_cmd spi_reg_read $1
+	set_val=$(($RUN_CMD_RET & $((~$2))))
+	set_val=$(printf "%08x" $set_val)
+	set_val=0x${set_val:0-8:8}
+	run_cmd spi_reg_write $1 $set_val
+}
+
+if [ $CMD_EN_PLL = true ]; then
+	check_regops
+	print_will "enable cpu pll"
+	wait_sure "Please make sure pmic has been poweron. Press [Enter]"
+	if [ $LOGOPS = true ]; then
+		wait_sure "Please make sure remove old dmesg. Press [Enter]"
+		dmesg -C
+	fi
+	print_note "Will config reg to enable cpu pll."
+	set_bit 0x0d460000 0x21
+	sleep 1
+	print_note "Will check cpu pll status."
+	run_cmd spi_reg_read 0x0d460010
+	# run_cmd spi_reg_read 0x10
+	get_mask=$(($RUN_CMD_RET & 0x00000001))
+	if [ $get_mask -ne 1 ]; then
+		print_err "PLL lock failed."
+		__exit 1
+	fi
+	print_ok "Config finish. Success!!"
+	__exit 0
+fi
+
+if [ $CMD_SPI_HIGH_SPEED = true ]; then
+	check_regops
+	print_will "spi/pci enable high speed mode"
+	wait_sure "Please make sure pmic has been poweron. Press [Enter]"
+	wait_sure "Please make sure pll has been enable. Press [Enter]"
+	if [ $LOGOPS = true ]; then
+		wait_sure "Please make sure remove old dmesg. Press [Enter]"
+		dmesg -C
+	fi
+	print_note "Will using pll for high speed."
+	clear_bit 0x0d462018 0x3
+	set_bit 0x0d462018 0x2
+	clear_bit 0x0d46200c 0x3
+	set_bit 0x0d46200c 0x2
+	clear_bit 0x0d462024 0x1
+	set_bit 0x0d462024 0x1
+	# clear_bit 0x0 0x00000010
+	# set_bit 0x10 0x00000110
+	print_ok "Config finish. Success!!"
+	__exit 0
+fi
+
+if [ $CMD_RUN = true ]; then
+	check_regops
+	print_will "release cpu"
+	wait_sure "Please make sure pmic has been poweron. Press [Enter]"
+	if [ $LOGOPS = true ]; then
+		wait_sure "Please make sure remove old dmesg. Press [Enter]"
+		dmesg -C
+	fi
+	print_note "Will config pmu for cpu."
+	run_cmd spi_reg_write 0x0d451218 1
+	print_note "Will reset cpu."
+	run_cmd spi_reg_write 0x0d40040c 0
+	print_note "Will config busmonitor for cpu."
+	run_cmd spi_reg_write 0x0d470018 500
+	print_note "Will release cpu."
+	run_cmd spi_reg_write 0x0d40040c 0x11f
+	print_ok "Config finish. Success!!"
+	__exit 0
+fi
+
+if [ $CMD_DOWN = true ]; then
+	check_regops
+	print_will "De-release cpu"
+	if [[ $LOGOPS = true ]] && [[ $WITH_SURE = true ]]; then
+		print_note "Please make sure remove old dmesg. Press [Enter]"
+		wait
+		dmesg -C
+	fi
+	print_note "Will config pmu off for cpu."
+	run_cmd spi_reg_write 0x0d451218 0
+	print_note "Will reset cpu."
+	run_cmd spi_reg_write 0x0d40040c 0
+	print_ok "Config finish. Success!!"
+	__exit 0
+fi

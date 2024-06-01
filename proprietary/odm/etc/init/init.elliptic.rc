@@ -1,0 +1,3 @@
+on fs
+    mkdir /data/elliptic 0666 system system
+    mkdir /mnt/vendor/persist/audio/us_cal_v2 0666 system system

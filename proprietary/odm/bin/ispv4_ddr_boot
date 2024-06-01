@@ -1,0 +1,223 @@
+#!/system/bin/sh
+
+###############################################################################
+#
+# ispv4 chip test: Boot cpu with ddr map.
+#
+# ispv4_ddr_boot
+#
+# This script lets you test ispv4 chip on android phone.
+#
+###############################################################################
+
+TFILE=/data/vendor/ispv4_ddrtraning
+
+# handy color vars for pretty prompts
+BLACK="\033[0;30m"
+BLUE="\033[0;34m"
+GREEN="\033[0;32m"
+GREY="\033[0;90m"
+CYAN="\033[0;36m"
+RED="\033[0;31m"
+PURPLE="\033[0;35m"
+BROWN="\033[0;33m"
+WHITE="\033[0;37m"
+BOLD="\033[1m"
+COLOR_RESET="\033[0m"
+
+function print_ok() {
+	echo -e $GREEN "----- " $1 " -----" $COLOR_RESET
+}
+
+function print_will() {
+	echo -e $GREEN "----- Will" $1 " -----" $COLOR_RESET
+}
+
+function print_note() {
+	echo -e $WHITE "--note: " $1 $COLOR_RESET
+}
+
+function print_warn() {
+	echo -e $CYAN "--note: " $1 $COLOR_RESET
+}
+
+function print_err() {
+	echo -e $RED "--note: " $1 $COLOR_RESET
+}
+
+function wait_sure() {
+	if [ $WITH_SURE = true ]; then
+		echo -e $WHITE "--note: " $1 $COLOR_RESET
+		wait
+	fi
+}
+
+##
+# prints the script usage
+##
+function usage() {
+	echo -e ""
+	echo -e "Usage: $0 [options]"
+	echo -e ""
+	echo -e "  Where options is one or more of:"
+	echo -e ""
+	echo -e "  -h  Prints Help text"
+	echo -e "  -s  Save traning data as file."
+	echo -e "  -f  Not only boot s1. boot s1/s2"
+	echo -e "  -b  Booting with map."
+	echo -e "  -B  Booting with map and resume file."
+	echo -e "  -d  Shutdown cpu."
+	echo -e "  -D  Shutdown cpu and restore file."
+	echo -e ""
+}
+##
+# prints the script document 
+##
+function doc() {
+	echo -e ""
+	echo -e "========== DOC =========="
+	echo -e ""
+	echo -e "====== BOOT >"
+	echo -e ""
+	echo -e "  CASE1: I want boot cpu stage 1/2"
+	echo -e "          Maybe you can use $GREEN$0 -bf$COLOR_RESET to boot cpu."
+	echo -e ""
+	echo -e "  CASE2: I want boot cpu stage 1/2 and using an exist traning file"
+	echo -e "          Maybe you can use $GREEN$0 -Bf$COLOR_RESET to boot cpu."
+	echo -e ""
+	echo -e "  CASE3: I want boot cpu only stage 1"
+	echo -e "          Maybe you can use $GREEN$0 -b$COLOR_RESET to boot cpu."
+	echo -e ""
+	echo -e "  CASE4: I want boot cpu stage 1 and map an exist traning file"
+	echo -e "          Maybe you can use $GREEN$0 -B$COLOR_RESET to boot cpu."
+	echo -e ""
+	echo -e "====== STOP >"
+	echo -e ""
+	echo -e "  CASE1: I want stop cpu"
+	echo -e "          Maybe you can use $GREEN$0 -d$COLOR_RESET to stop cpu."
+	echo -e ""
+	echo -e "  CASE2: I want stop cpu and restore ddr traning file"
+	echo -e "          Maybe you can use $GREEN$0 -D$COLOR_RESET to stop cpu and save file."
+	echo -e ""
+	echo -e "====== STOP >"
+	echo -e ""
+	echo -e "  CASE1: I want to save the ddr traning data as a file from v4"
+	echo -e "          Maybe you can use $GREEN$0 -D$COLOR_RESET to stop cpu and save."
+	echo -e "          If you don not want to stop cpu but only save, use $GREEN$0 -s$COLOR_RESET."
+	echo -e ""
+}
+
+function __exit() {
+	exit $1
+}
+
+CMD_SAVE=false
+CMD_BOOT=false
+BOOT_WITH_RESUME=false
+CMD_DOWN=false
+DOWN_WITH_RESTORE=false
+NONLY_S1=false
+POWERCTRL=false
+
+while getopts ":hsSbBdDfp" opt; do
+	case $opt in
+	h)
+		usage
+		exit 0
+		;;
+	s)
+		CMD_SAVE=false
+		;;
+	b)
+		CMD_BOOT=true
+		;;
+	B)
+		CMD_BOOT=true
+		BOOT_WITH_RESUME=true
+		;;
+	d)
+		CMD_DOWN=true
+		;;
+	D)
+		CMD_DOWN=true
+		DOWN_WITH_RESTORE=true
+		;;
+	f)
+		NONLY_S1=true
+		;;
+	p)
+		POWERCTRL=true
+		;;
+	esac
+done
+
+function check_map() {
+	if [ ! -f "/d/xm_ispv4/ispv4_ionmap/map" ]; then
+		print_warn "Not found ionmap"
+		__exit 1
+	fi
+}
+
+function check_boot() {
+	if [ ! -f "/d/xm_ispv4/ispv4_rproc/boot" ]; then
+		print_warn "Not found rproc"
+		__exit 2
+	fi
+}
+
+function map_region() {
+	if [ ! -f "/d/xm_ispv4/ispv4_ionmap/W_FOR_DDRTRANIN" ]; then
+		echo 8 > /d/xm_ispv4/ispv4_ionmap/map
+	fi
+}
+
+if [ $CMD_BOOT = true ]; then
+	print_will "Will boot cpu"
+	# make sure in shutdown
+	echo offline > /d/xm_ispv4/ispv4_rproc/boot
+	if [ $POWERCTRL = true ]; then
+		ispv4_power_ctrl chipoff
+		ispv4_power_ctrl chipon
+	fi
+	print_warn "Reload fw from fs"
+	echo Y > /d/xm_ispv4/ispv4_rproc/fw_reload
+	map_region
+	if [ $BOOT_WITH_RESUME = true ]; then
+		check_map
+		print_warn "Will resume file [$TFILE] to map"
+		echo 0x11c000 > /d/xm_ispv4/ispv4_memdump/map
+		cat $TFILE > /d/xm_ispv4/ispv4_memdump/memW
+	else
+		print_warn "Without resume file to map"
+		echo 0x11c000 > /d/xm_ispv4/ispv4_memdump/map
+		dd if=/dev/zero of=/d/xm_ispv4/ispv4_memdump/memW count=1 bs=104k
+	fi
+	check_boot
+	bootcmd=s1run
+	if [ $NONLY_S1 = true ]; then
+		bootcmd=run
+	fi
+	echo $bootcmd > /d/xm_ispv4/ispv4_rproc/boot
+	RET=$?
+	if [ $RET -ne "0" ]; then
+		__exit $RET
+	fi
+	print_ok "Config finish. Success!!"
+	__exit 0
+fi
+
+if [ $CMD_DOWN = true ]; then
+	print_will "Will shutdown cpu"
+	check_boot
+	echo offline > /d/xm_ispv4/ispv4_rproc/boot
+	if [ $DOWN_WITH_RESTORE = true ]; then
+		check_map
+		print_warn "Will restore map-region to file [$TFILE]"
+		dd if=/d/xm_ispv4/ispv4_ionmap/R_FOR_DDRTRANING of=$TFILE count=1 bs=105k
+	else
+		print_warn "Without restore map-region to file [$TFILE]"
+	fi
+	__exit 0
+fi
+
+doc

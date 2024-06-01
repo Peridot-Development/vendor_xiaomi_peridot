@@ -1,0 +1,27 @@
+//for algomask
+//bit[0] enable support mfnr/hdr/sr/mfbokeh
+//bit[1] enable anchor up  :pre anchor
+//bit[2] enbale anchor down
+//bit[3] enable frame Resuse
+//bit[4] monitor First Shutter
+//bit[5] monitor Final Shutter
+//bit[6] monitor Final Buffer
+//bit[7] reserve
+//bit[8-15]  control reserve
+//bit[16-31] reserve
+{
+    "enableDSACMoudle" : false,
+    "forceEnableDSACStorage" : false,
+    "UsePropPriority": true,
+    "enableGalleryComplete": false,
+    "MFNRMask" : 17,
+    "HDRMask" :  17,
+    "SRMask"  :  17,
+    "MFNRBokehMask" : 1,
+    "MfnrBokehMultiNumber" : 5,
+    "enableLoadMeta" : true,
+    "enableDumpMeta" : false,
+    "SDCardWriteType" : 2,
+    "MaxStorageNum" : 50,
+    "MinWbAvailBuf" : 2
+}

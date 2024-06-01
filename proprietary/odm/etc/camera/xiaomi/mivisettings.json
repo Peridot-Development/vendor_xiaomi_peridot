@@ -1,0 +1,7 @@
+{
+    "offlinedebugmask" : 0,
+    "Soc" : "QCOM",
+    "SupportBinaryLog": true,
+    "NightBokehConcurrencyProcess" : false,
+    "OpenLIFO" : 1
+}

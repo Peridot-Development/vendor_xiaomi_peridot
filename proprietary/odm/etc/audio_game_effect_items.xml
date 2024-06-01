@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <!--
+        List of FPS packages which support AudioGameEffect.
+    -->
+    <FPSpackages>
+        <FPSpackage name="com.tencent.tmgp.pubgmhd"/>
+        <FPSpackage name="com.tencent.tmgp.cf"/>
+        <FPSpackage name="com.tencent.toaa"/>
+        <FPSpackage name="com.tencent.tmgp.cod"/>
+        <FPSpackage name="com.tencent.ig"/>
+        <FPSpackage name="com.activision.callofduty.shooter"/>
+    </FPSpackages>
+    <!--
+        List of ALL packages which support AudioGameEffect.
+        Each package has two AudioGameEffect parameters for headset and speaker.
+        For param item, four number represent: [low frequency voice]-[human dialogue voice]-[footsteps voice]-[surround sound voice], respectively
+        [0, 100] represents the degree of voice enhancement
+    -->
+    <package name="com.tencent.tmgp.pubgmhd">
+        <device name="headset" param="100-0-100-100"/>
+        <device name="speaker" param="100-0-100-100"/>
+    </package>
+    <package name="com.tencent.tmgp.cf">
+        <device name="headset" param="100-0-100-100"/>
+        <device name="speaker" param="100-0-100-100"/>
+    </package>
+    <package name="com.tencent.toaa">
+        <device name="headset" param="100-0-100-100"/>
+        <device name="speaker" param="100-0-100-100"/>
+    </package>
+    <package name="com.tencent.tmgp.cod">
+        <device name="headset" param="100-0-100-100"/>
+        <device name="speaker" param="100-0-100-100"/>
+    </package>
+    <package name="com.miHoYo.ys.mi">
+        <device name="headset" param="0-100-0-0"/>
+        <device name="speaker" param="0-0-0-0"/>
+    </package>
+    <package name="com.miHoYo.Yuanshen">
+        <device name="headset" param="0-100-0-0"/>
+        <device name="speaker" param="0-0-0-0"/>
+    </package>
+    <package name="com.tencent.tmgp.sgame">
+        <device name="headset" param="0-100-0-0"/>
+        <device name="speaker" param="0-0-0-0"/>
+    </package>
+    <!-- Follow packages are used for overseas version -->
+</packages>

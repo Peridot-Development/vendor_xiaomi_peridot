@@ -1,0 +1,11 @@
+#minidump service
+on property:vendor.minidump.crash_reason=* 
+  start general_service64
+
+service general_service64 /vendor/bin/general_service64
+  class late_start
+  user root
+  group root log system
+  oneshot
+  disabled
+  seclabel u:r:minidump64:s0

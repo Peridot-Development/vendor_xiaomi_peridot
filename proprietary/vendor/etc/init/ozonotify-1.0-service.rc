@@ -1,0 +1,4 @@
+service vendor.ozonotify-default /vendor/bin/hw/vendor.ozoaudio.notify@1.0-service
+    class hal
+    user system
+    group system

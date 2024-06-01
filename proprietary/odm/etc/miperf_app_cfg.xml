@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PerfService>
+        <Package name0="com.android.test1" name1="com.android.test2" name2="com.android.test3" name3="com.android.test4">
+                <PERF_RES_BCK_CPUS Param1="2-6"/>
+                <PERF_RES_MIN_FREQ_CPU Param1="0:200000"/>
+                <PERF_RES_SCHED_BOOST Param1="1"/>
+        </Package>
+</PerfService>

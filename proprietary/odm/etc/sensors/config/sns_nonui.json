@@ -1,0 +1,36 @@
+{
+  "config": {
+    "hw_platform": ["MTP", "QRD", "Dragon", "Surf", "HDK", "RCM"],
+    "soc_id": ["519", "557", "536", "577", "614"]
+  },
+  "sns_nonui": {
+    "owner": "sns_nonui",
+    ".params":{
+      "owner": "sns_nonui",
+          "param1": {
+              "ver": "0", "type": "flt", "data": "-350"
+          },
+          "param2": {
+              "ver": "0", "type": "flt", "data": "-940"
+          },
+          "param3": {
+              "ver": "0", "type": "flt", "data": "-1020"
+          },
+          "param4": {
+              "ver": "0", "type": "flt", "data": "200"
+          },
+          "param5": {
+              "ver": "0", "type": "flt", "data": "0"
+          },
+          "param6": {
+              "ver": "0", "type": "flt", "data": "5"
+          }
+    },
+    ".packParams":{
+      "owner": "sns_nonui",
+          "psensorThold1": {
+            "ver": "3", "type": "flt", "data": "200"
+          }
+    }
+  }
+}

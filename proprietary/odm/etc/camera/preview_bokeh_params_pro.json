@@ -1,0 +1,287 @@
+{
+  "/": "Version",
+  "StructVersion": {
+      "Version": 20240301
+    },
+  "/": "Depth parameters",
+  "StructB": {
+    "paramA": 31,
+    "paramB": 31,
+    "paramC": 9,
+    "paramH": 30,
+    "paramF": 2000,
+    "StructRear": {
+      "StructHS": {
+        "paramE": -8,
+        "paramF": 32
+      },
+      "StructQS": {
+        "paramE": -4,
+        "paramF": 16
+      }
+    },
+    "StructFront": {
+      "StructHS": {
+        "paramE": -23,
+        "paramF": 32
+      },
+      "StructQS": {
+        "paramE": -11,
+        "paramF": 16
+      }
+    }
+  },
+  "StructC": {
+    "paramT": 1,
+    "paramD": 5,
+    "paramSX": 4,
+    "paramSY": 4,
+    "paramL0": 4,
+    "paramL1": 4,
+    "paramL2": 4,
+    "paramL3": 1,
+    "paramL4": 1,
+    "paramL": 48.0,
+    "paramF": 1,
+    "paramAlpha": 0.3,
+    "paramIsBlur3D": 1
+  },
+  "StructI": {
+    "paramB": 1,
+    "paramU": 1,
+    "paramI": 0,
+    "paramW": 7,
+    "paramS": 5,
+    "paramR": 0.1,
+    "paramGT": 220,
+    "paramT": 128,
+    "paramBF": 0,
+    "paramWR": 0.19,
+    "paramAR": 0.05
+  },
+  "StructSC": {
+    "paramA": 1,
+    "paramL": 10.0,
+    "paramS": 200.0,
+    "paramR": 0.1
+  },
+  "StructCA": {
+    "paramS": 0,
+    "paramSigma1": 0.50,
+    "paramSigma2": 0.33,
+    "paramSigma3": 0.17,
+    "paramDensityThres1": 0.1,
+    "paramDensityThres2": 0.5
+  },
+  "StructP": {
+    "paramA": 3,
+    "paramC": 256,
+    "paramD": 12
+  },
+  "StructTC": {
+    "Struct_4_3": {
+      "paramH": 1,
+      "paramWS": 1,
+      "paramD": 1,
+      "paramL": 1
+    },
+    "Struct_16_9": {
+      "paramH": 1,
+      "paramWS": 1,
+      "paramD": 1,
+      "paramL": 1
+    },
+    "Struct_full": {
+      "paramH": 1,
+      "paramWS": 1,
+      "paramD": 1,
+      "paramL": 1
+    }
+  },
+  "//": "Calib parameters",
+  "StructM_WU": {
+    "param_InitMode": 1,
+    "param_PreProcessDark": 1,
+    "param_Tx": -26.4,
+    "param_Ty": 0,
+    "param_Type": 3,
+    "param_BSwap": 0,
+    "param_UndisSelect": 32,
+    "param_BinHasDistable": 0,
+    "StructD_MAIN_30": {
+      "param_MAINDIS0": 0,
+      "param_MAINDIS1": 0.25,
+      "param_MAINDIS2": 0.75,
+      "param_MAINDIS3": 1.18,
+      "param_MAINDIS4": 1.43,
+      "param_MAINDIS5": 1.59,
+      "param_MAINDIS6": 1.63,
+      "param_MAINDIS7": 1.50,
+      "param_MAINDIS8": 1.38,
+      "param_MAINDIS9": 1.25,
+      "param_MAINDIS10": 1.12
+    },
+    "StructD_MAIN_31": {
+      "param_MAINDIS0": 0,
+      "param_MAINDIS1": 0.13,
+      "param_MAINDIS2": 0.45,
+      "param_MAINDIS3": 0.81,
+      "param_MAINDIS4": 1.06,
+      "param_MAINDIS5": 1.22,
+      "param_MAINDIS6": 1.33,
+      "param_MAINDIS7": 1.27,
+      "param_MAINDIS8": 1.25,
+      "param_MAINDIS9": 1.21,
+      "param_MAINDIS10": 1.04
+    },
+    "StructD_SUB_68": {
+      "param_SUBDIS0": 0,
+      "param_SUBDIS1": -0.01,
+      "param_SUBDIS2": -0.21,
+      "param_SUBDIS3": -0.66,
+      "param_SUBDIS4": -1.20,
+      "param_SUBDIS5": -1.57,
+      "param_SUBDIS6": -1.73,
+      "param_SUBDIS7": -2.03,
+      "param_SUBDIS8": -3.76,
+      "param_SUBDIS9": -8.93,
+      "param_SUBDIS10": -19.50
+    },
+    "StructD_SUB_9B": {
+      "param_SUBDIS0": 0,
+      "param_SUBDIS1": -0.00,
+      "param_SUBDIS2": -0.07,
+      "param_SUBDIS3": -0.03,
+      "param_SUBDIS4": -0.16,
+      "param_SUBDIS5": -0.43,
+      "param_SUBDIS6": -0.57,
+      "param_SUBDIS7": -1.04,
+      "param_SUBDIS8": -3.14,
+      "param_SUBDIS9": -8.45,
+      "param_SUBDIS10": -17.89
+    }
+  },
+  "StructPublic": {
+    "param_ProjectNum": "N16T",
+    "param_bVerbose": 0,
+    "param_LM_BD": 10,
+    "param_LM_SD": 3.0,
+    "param_LM_SJ": 6.0,
+    "param_LM_MI": 50,
+    "param_LM_DT": 1e-8,
+    "param_LM_DE": 1e-10,
+    "param_LM_BE": 1e-8,
+    "param_LM_CE": 1e-5,
+    "param_FeatureNum": 30,
+    "param_RansacThd": 2.0,
+    "param_DispRankRatio": 0.02,
+    "param_WinSize": 21,
+    "param_MaxLevel": 2,
+    "param_QualityLevel": 0.005,
+    "param_PAP0": 0.5,
+    "param_PAP2": 0.1
+  },
+  "StructIMG_1x_WU_Bin_Bin": {
+    "param_F_proc": 1.45,
+    "param_C_disp":5,	
+    "param_M_Nc": 1,
+    "param_S_Nc": 1,
+    "paramBR_w": 0,
+    "paramBR_h": 0,
+    "param_m_4_3w": 4096,
+    "param_m_4_3h": 3072,
+    "param_s_4_3w": 2688,
+    "param_s_4_3h": 2016,
+    "param_m_16_9w": 4096,
+    "param_m_16_9h": 2304,
+    "param_s_16_9w": 2688,
+    "param_s_16_9h": 1512,
+    "param_m_allw": 4096,
+    "param_m_allh": 1844,
+    "param_s_allw": 2688,
+    "param_s_allh": 1212
+  },
+  "///": "BokehEffect parameters",
+  "StructE": {
+    "paramUV": 1,
+    "paramS": 0,
+    "paramM": 0,
+    "paramD": 0,
+    "paramT1": 0.05,
+    "paramT2": 0.95,
+    "paramT3": 40,
+    "paramT4": 1000,
+    "paramTF": 0.9,
+    "paramTC": 2,
+    "paramBGA": 2.0,
+    "paramFGA": 2.0,
+    "paramBR_1x": 0.3,
+    "paramBR_3x": 1.9
+  },
+  "StructB1": {
+    "StructR1": 0.01,
+    "StructR2": 0.01,
+    "StructB": 0.0006,
+    "StructF": 0.6,
+    "StructL1": 4.0,
+    "StructL11": 4.0,
+    "StructL2": 1.0,
+    "StructBG": 1.6,
+    "StructFG": 1.5,
+    "StructBR": 2.0,
+    "StructCR": 1.0,
+    "StructSR": 6
+  },
+  "StructB2": {
+    "StructR1": 0.01,
+    "StructR2": 0.01,
+    "StructB": 0.0004,
+    "StructF": 0.6,
+    "StructL1": 4.0,
+    "StructL2": 0.5,
+    "StructBG": 1.6,
+    "StructFG": 1.5,
+    "StructBR": 2.0,
+    "StructCR": 1.0,
+    "StructSR": 8
+  },
+  "StructTransAnim": {
+    "paramBypassFrame": 86,
+    "paramRefocusFrame": 10
+  },
+  "////": "sum control",
+  "StructS": {
+    "paramD": 0,
+    "paramH": 1,
+    "paramM": 1,
+    "paramS": 9,
+    "paramDR": 1,
+    "paramES": 1,
+    "paramDS": 1,
+    "paramSS": 0,
+    "paramMS": 1,
+    "paramFrameCacheOn": 0,	
+    "StructH": {
+      "paramD1_4_3": 256,
+      "paramD1_16_9": 256,
+      "paramD1_20_9": 320,
+      "paramR_4_3": 256,
+      "paramR_16_9": 256,
+      "paramR_20_9": 320,
+      "paramBM": 1,
+      "paramBF": 1,
+      "paramG": 1
+    },
+    "StructTemperature": {
+      "paramLiteModeTemp_Down": 42000,
+      "paramLiteModeTemp_Up": 43000,
+      "paramBypassModeTemp_Down": 45000,
+      "paramBypassModeTemp_Up": 46000
+    },
+    "StructC": {
+      "paramDsRat_4_3": 4,
+      "paramDsRat_16_9": 4,
+      "paramDsRat_20_9": 4
+    }
+  }
+}

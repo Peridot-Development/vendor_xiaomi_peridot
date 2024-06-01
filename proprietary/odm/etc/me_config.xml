@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+-->
+<MESubFeatureConfig>
+    <!--cn -->
+    <!-- device_name = ro.product.device -->
+    <deviceConfig device_name="peridot">
+        <!-- hwc_name = ro.product.mod_device -->
+        <hwc hwc_name="CN" />
+        <!-- feature_id refer to MEFeatureConfig.MEFEATURE_TYPE_ID_XXX -->
+        <feature feature_id="1" hw_support="0"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="2" hw_support="1"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="3" hw_support="1"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="4" hw_support="1"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="5" hw_support="0"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="6" hw_support="0"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="7" hw_support="1"  sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+        <feature feature_id="8" hw_support="1"  sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+        <feature feature_id="9" hw_support="1"  sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+        <feature feature_id="10" hw_support="1"  sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+        <feature feature_id="11" hw_support="0"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="12" hw_support="1"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="13" hw_support="1"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="14" hw_support="1"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="15" hw_support="0"  sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="16" hw_support="1"  sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+        <feature feature_id="17" hw_support="1" sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+        <feature feature_id="18" hw_support="0" sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="19" hw_support="0" sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="20" hw_support="0" sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="21" hw_support="0" sw_enable="0" sw_mp_enable="0" sw_version="1"/>
+        <feature feature_id="22" hw_support="1" sw_enable="1" sw_mp_enable="1" sw_version="1"/>
+
+        <!--bitMask 0x31f==853 -->
+        <GestureModeMapConfigBitMask bitMask="524063" />
+        <GestureModeMapConfig>
+        </GestureModeMapConfig>
+
+        <!--MTPL control -->
+        <MTPLControlMapConfig>
+             <MTPLControlMapItem camera="1"  voice="1" weak2="1"  game="1" outMode="3"/>
+             <MTPLControlMapItem camera="1"  voice="2" weak2="1"  game="1" outMode="3"/>
+             <MTPLControlMapItem camera="1"  voice="1" weak2="1"  game="255" outMode="3"/>
+             <MTPLControlMapItem camera="1"  voice="2" weak2="1"  game="255" outMode="3"/>
+             <MTPLControlMapItem camera="1"  voice="255" weak2="1"  game="1" outMode="3"/>
+             <MTPLControlMapItem camera="1"  voice="255" weak2="255"  game="1" outMode="2"/>
+             <MTPLControlMapItem camera="1"  voice="255" weak2="255"  game="255" outMode="2"/>
+             <MTPLControlMapItem camera="255"  voice="1" weak2="1"  game="1" outMode="1"/>
+             <MTPLControlMapItem camera="255"  voice="2" weak2="1"  game="1" outMode="1"/>
+             <MTPLControlMapItem camera="255"  voice="1" weak2="1"  game="255" outMode="1"/>
+             <MTPLControlMapItem camera="255"  voice="2" weak2="1"  game="255" outMode="1"/>
+             <MTPLControlMapItem camera="255"  voice="255" weak2="1"  game="1" outMode="1"/>
+             <MTPLControlMapItem camera="255"  voice="255" weak2="255"  game="1" outMode="0"/>
+             <MTPLControlMapItem camera="255"  voice="255" weak2="255"  game="255" outMode="0"/>
+              <!--test -->
+             <MTPLControlMapItem camera="255"  voice="255" weak="255"  outMode="255"/>
+        </MTPLControlMapConfig>
+
+        <PowerMapConfigBitMask bitMask="4095" />
+        <PowerMapConfig>
+             <!--sleep mode -->
+             <PowerMapConfigItem sleep_abnormal="1"  screen="255" sleep_mod="1" voice="0" data="0" nw_search="0" monitor_timer="255" user_experience="0" mp_device="1" static ="255" rat_pingpang="255" outAction="4"/>
+             <PowerMapConfigItem sleep_abnormal="1"  screen="255" sleep_mod="1" voice="0" data="0" nw_search="0" monitor_timer="255" user_experience="1" mp_device="1" static ="255" rat_pingpang="255" outAction="5"/>
+             <PowerMapConfigItem sleep_abnormal="1"  screen="255" sleep_mod="1" voice="0" data="0" nw_search="0" monitor_timer="255" user_experience="255" mp_device="0" static ="255" rat_pingpang="255" outAction="6"/>
+             <!--non-sleep  screen-off -->
+             <PowerMapConfigItem sleep_abnormal="1"  screen="0" sleep_mod="0" voice="0" data="0" nw_search="0" monitor_timer="1" user_experience="0" mp_device="1" static ="255" rat_pingpang="255" outAction="2"/>
+             <PowerMapConfigItem sleep_abnormal="1"  screen="0" sleep_mod="0" voice="0" data="0" nw_search="0" monitor_timer="1" user_experience="1" mp_device="1" static ="255" rat_pingpang="255" outAction="2"/>
+             <PowerMapConfigItem sleep_abnormal="1"  screen="0" sleep_mod="0" voice="0" data="0" nw_search="0" monitor_timer="1" user_experience="255" mp_device="0" static ="255" rat_pingpang="255" outAction="3"/>
+             <!--non-sleep  screen-on -->
+             <PowerMapConfigItem sleep_abnormal="1"  screen="1" sleep_mod="0" voice="0" data="0" nw_search="0" monitor_timer="1" user_experience="1" mp_device="1" static ="255" rat_pingpang="255" outAction="2"/>
+             <PowerMapConfigItem sleep_abnormal="1"  screen="1" sleep_mod="0" voice="0" data="0" nw_search="0" monitor_timer="1" user_experience="255" mp_device="0" static ="255" rat_pingpang="255" outAction="3"/>
+             <!--rat pingpang  screen-off -->
+             <PowerMapConfigItem sleep_abnormal="255"  screen="0" sleep_mod="255" voice="255" data="255" nw_search="255" monitor_timer="255" user_experience="255" mp_device="255" static ="1" rat_pingpang="1" outAction="7"/>
+          </PowerMapConfig>
+
+    </deviceConfig>
+
+    <!--default -->
+    <!-- device_name = ro.product.device -->
+    <deviceConfig device_name="peridot">
+        <!-- hwc_name = ro.product.mod_device -->
+        <hwc hwc_name="default" />
+        <!-- feature_id refer to MEFeatureConfig.MEFEATURE_TYPE_ID_XXX -->
+        <feature feature_id="1" hw_support="0"  sw_enable="0" sw_mp_enable="0"/>
+        <feature feature_id="17" hw_support="1" sw_enable="1" sw_mp_enable="1"/>
+    </deviceConfig>
+
+</MESubFeatureConfig>
